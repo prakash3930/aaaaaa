@@ -4,9 +4,8 @@ const {userData} = require('./../modules/user.data');
 // registration section .....
 exports.userRTS = (req,res)=>{
     const {name,email,Password} = req.body;
-    const id = Date.now().toString();
     const user = {
-       id, name,email,Password
+     name,email,Password
     };
 userData.push(user);
    res.redirect("/");
@@ -20,13 +19,9 @@ exports.userredirect = (req,res)=>{
 
 // user login section..
 exports.userLogin = (req,res)=>{
-    const {id,email,Password} = req.body;
-    
-    // const emaill = userData[1].email;
-    // const pass = userData[1].password;
-    // console.log(emaill);
-    // console.log(pass);
-
+    const {email,Password} = req.body;
+    const emaill = userData[0].email;
+    const pass = userData[0].password;
     if(email == emaill && Password == pass){
         res.redirect("/api/v1/home");
     }
